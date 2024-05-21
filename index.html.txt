@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Map Sectors</title>
+    <!-- Подключаем API Яндекс Карт -->
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=0f2d1024-aa27-4ceb-b1cc-284236a7812d
+&lang=ru_RU" type="text/javascript"></script>
+    <script>
+        // Функция, вызываемая после загрузки API
+        ymaps.ready(function () {
+            var center = [55.753215, 37.622504];
+            var map = new ymaps.Map('map', {
+                center: center,
+                zoom: 12
+            });
+
+            // Определяем многоугольники как в вашем исходном коде
+            var sectorA = new ymaps.Polygon([
+                [
+                    center,
+                    [56.0, 37.622504],
+                    [56.0, 38.0],
+                    [55.753215, 38.0],
+                    center // Замыкаем контур
+                ]
+            ], {}, {
+                fillColor: '#FF0000',
+                strokeColor: '#FF0000',
+                opacity: 0.5,
+                strokeWidth: 2
+            });
+
+            var sectorB = new ymaps.Polygon([
+                [
+                    center,
+                    [56.0, 37.622504],
+                    [56.0, 37.0],
+                    [55.753215, 37.0],
+                    center
+                ]
+            ], {}, {
+                fillColor: '#00FF00',
+                strokeColor: '#00FF00',
+                opacity: 0.5,
+                strokeWidth: 2
+            });
+
+            var sectorV = new ymaps.Polygon([
+                [
+                    center,
+                    [55.753215, 37.0],
+                    [55.5, 37.0],
+                    [55.5, 37.622504],
+                    center
+                ]
+            ], {}, {
+                fillColor: '#0000FF',
+                strokeColor: '#0000FF',
+                opacity: 0.5,
+                strokeWidth: 2
+            });
+
+            var sectorG = new ymaps.Polygon([
+                [
+                    center,
+                    [55.753215, 38.0],
+                    [55.5, 38.0],
+                    [55.5, 37.622504],
+                    center
+                ]
+            ], {}, {
+                fillColor: '#FFFF00',
+                strokeColor: '#FFFF00',
+                opacity: 0.5,
+                strokeWidth: 2
+            });
+
+            // Добавляем многоугольники на карту
+            map.geoObjects.add(sectorA);
+            map.geoObjects.add(sectorB);
+            map.geoObjects.add(sectorV);
+            map.geoObjects.add(sectorG);
+        });
+    </script>
+</head>
+<body>
+    <div id="map" style="height: 500px; width: 100%;"></div>
+</body>
+</html>
